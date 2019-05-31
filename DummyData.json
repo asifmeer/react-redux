@@ -1,0 +1,19 @@
+[
+     {
+        id: "1",
+        name: 'user 1',
+        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
+     },
+     {
+        id: "2",
+        name: 'user 2',
+        avatar: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+     },
+     {
+        id: "3",
+        name: 'user 3',
+        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
+     }
+]
+
+
