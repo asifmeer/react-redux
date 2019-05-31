@@ -21,7 +21,7 @@ export const getTodos = () => {
   data = [{"name" : "asif"},{"name" : "waif"}];  
       // console.log("action calling")
    
-      dispatch(getTodosListSuccess(data));
+     return getTodosListSuccess(data);
   // console.log("inside get todos code");
   //  fetch('http://localhost:3000/api/todos', {
   //        method: 'GET'

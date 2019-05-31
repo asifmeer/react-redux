@@ -1,66 +1,54 @@
 import React, { Component } from 'react';
-import {  FlatList, StyleSheet, Text, View, Image, Button } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Image, Button } from 'react-native';
 import { connect } from 'react-redux';
-import {MyListItem} from '../MyListItem';
+import { MyListItem } from '../MyListItem';
 import OfflineNotice from '../OfflineNotice';
 import AddTodoScreen from './AddTodo';
-import  {getTodos, getTodosListSuccess}  from '../redux/actions/gettodos'
-// import getTodosListAction from '../redux/actions/get-todos'
-import PropTypes from 'prop-types';
+import { getTodos } from '../redux/actions/gettodos'
+
 
 class ToDoListScreen extends Component {
   static navigationOptions = {
     title: 'ToDoList'
-   };
+  };
 
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getTodos()
   }
 
 
-
   render() {
-
-    // console.log(this.props.todosData);
-
     return (
       <View style={styles.container}>
-        <OfflineNotice /> 
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>instructions</Text>
-
+        <OfflineNotice />
+        <Text>Data Fetching</Text>
         <FlatList
-         data={this.props.todosData}
-         renderItem={({item}) => <MyListItem source={item} />}
+          data={this.props && this.props.data}
+          renderItem={({ item }) => <MyListItem source={item} />}
         />
 
       </View>
     );
   }
 }
-const mapStateToProps = state => ({
-  todosData: state.payload,
-});
 
-export default connect(mapStateToProps,{
+const mapStateToProps = (todosData) => {
+  const { data, error, loading } = todosData.todos.todosData;
+  return { data, error, loading }
+};
+
+
+export default connect(mapStateToProps, {
   getTodos
 })(ToDoListScreen);
 
 
-ToDoListScreen.propTypes = {
-  appState: PropTypes.object,
-  ToDoListScreen: PropTypes.func,
-  dispatch: PropTypes.func,
-  todosData : PropTypes.array
-};
-
 const styles = StyleSheet.create({
   container: {
-   flex: 1,
-   marginTop: 50,
-   // paddingTop: 10,
+    flex: 1,
+    marginTop: 50,
+    // paddingTop: 10,
 
   },
   item: {
